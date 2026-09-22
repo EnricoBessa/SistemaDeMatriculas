@@ -64,3 +64,6 @@ Este repositório contém o projeto de software desenvolvido para o Laboratório
 
 * **Critérios de Aceitação:**
   * O professor só visualiza a lista de turmas/disciplinas que estão sob a sua responsabilidade.
+
+ ## Diagrama
+<img width="1218" height="540" alt="diagrama1" src="https://github.com/user-attachments/assets/6e838a04-616f-46b1-a3f3-56bc03fa3f2e" />
