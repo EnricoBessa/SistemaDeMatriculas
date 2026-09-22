@@ -12,13 +12,31 @@ public class Aluno extends Usuario {
     }
 
     public boolean solicitarMatricula(Disciplina disciplina, boolean ehObrigatoria, boolean periodoAberto) {
-        // Stub: Lógica de negócio da Sprint 3 validará os limites de 4 obrigatórias e 2 optativas
+        // Stub: Valida os limites de 4 obrigatórias e 2 optativas
+        if (!periodoAberto) return false;
+
+        if (ehObrigatoria && disciplinasObrigatorias.size() < 4) {
+            disciplinasObrigatorias.add(disciplina);
+            disciplina.adicionarAluno(this);
+            SistemaCobranca.notificarInscricao(this); // Alinhado com a dependência da UML
+            return true;
+        } else if (!ehObrigatoria && disciplinasOptativas.size() < 2) {
+            disciplinasOptativas.add(disciplina);
+            disciplina.adicionarAluno(this);
+            SistemaCobranca.notificarInscricao(this); // Alinhado com a dependência da UML
+            return true;
+        }
         return false;
     }
 
     public boolean cancelarMatricula(Disciplina disciplina, boolean periodoAberto) {
-        // Stub: Lógica para remover das listas e atualizar vagas da disciplina
-        return false;
+        if (!periodoAberto) return false;
+        
+        boolean removido = disciplinasObrigatorias.remove(disciplina) || disciplinasOptativas.remove(disciplina);
+        if (removido) {
+            disciplina.removerAluno(this);
+        }
+        return removido;
     }
 
     public List<Disciplina> getDisciplinasObrigatorias() { return disciplinasObrigatorias; }
