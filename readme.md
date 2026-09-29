@@ -66,4 +66,4 @@ Este repositório contém o projeto de software desenvolvido para o Laboratório
   * O professor só visualiza a lista de turmas/disciplinas que estão sob a sua responsabilidade.
 
  ## Diagrama
-<img width="1218" height="540" alt="diagrama1_corrigido" src="diagramas/diagrama1_versao3.png.png" />
+<img width="1218" height="540" alt="diagrama1_corrigido" src="diagramas/diagrama1_versao3.png" />
