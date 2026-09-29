@@ -15,4 +15,8 @@ public class Curso {
     public void adicionarDisciplina(Disciplina d) {
         this.gradeCurricular.add(d);
     }
+
+    public List<Disciplina> getGradeCurricular() {
+        return gradeCurricular;
+    }
 }
