@@ -1,13 +1,17 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Disciplina {
+public class Disciplina implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String codigo;
     private String nome;
     private Professor professor;
     private List<Aluno> alunosInscritos;
     private boolean ehObrigatoria;
-    private StatusDisciplina status; // Alinhado com o diagrama UML
+    private StatusDisciplina status;
 
     public Disciplina(String codigo, String nome, boolean ehObrigatoria) {
         this.codigo = codigo;
@@ -18,20 +22,23 @@ public class Disciplina {
     }
 
     public boolean adicionarAluno(Aluno aluno) {
-        // Stub: Validar limite máximo de 60 alunos e status diferente de CANCELADA
-        if (this.alunosInscritos.size() < 60 && this.status != StatusDisciplina.CANCELADA) {
+        if (this.alunosInscritos.size() < 60
+                && this.status != StatusDisciplina.CANCELADA
+                && !this.alunosInscritos.contains(aluno)) {
+
             this.alunosInscritos.add(aluno);
             return true;
         }
+
         return false;
     }
+
 
     public void removerAluno(Aluno aluno) {
         this.alunosInscritos.remove(aluno);
     }
 
     public void finalizarPeriodoMatricula() {
-        // Stub: Validar se tem pelo menos 3 alunos para ativar, senão cancela
         if (this.alunosInscritos.size() >= 3) {
             this.status = StatusDisciplina.ATIVA;
         } else {
@@ -43,7 +50,15 @@ public class Disciplina {
         this.professor = professor;
     }
 
-    public List<Aluno> getAlunosInscritos() { return alunosInscritos; }
-    public String getNome() { return nome; }
-    public StatusDisciplina getStatus() { return status; }
+    public List<Aluno> getAlunosInscritos() {
+        return alunosInscritos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public StatusDisciplina getStatus() {
+        return status;
+    }
 }

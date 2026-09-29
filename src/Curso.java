@@ -1,7 +1,11 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Curso {
+public class Curso implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String nome;
     private int totalCreditos;
     private List<Disciplina> gradeCurricular;
@@ -18,5 +22,9 @@ public class Curso {
 
     public List<Disciplina> getGradeCurricular() {
         return gradeCurricular;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
